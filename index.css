@@ -11,7 +11,6 @@ body {
 }
 
 header {
-  
   height: 167px;
   background-image: url("https://images.unsplash.com/photo-1616645500344-209060c84970?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
   background-size: cover;
@@ -29,7 +28,7 @@ p {
   font-size: 22px;
 }
 
-#menu-container{
+#menu-container {
   width: 500px;
   margin: 10px auto;
 }
@@ -38,30 +37,55 @@ p {
   display: flex;
   height: 140px;
   align-items: center;
+  border-bottom: 1px solid #D2D2D2;
 }
 
-.item-icon{
-  font-family: 'Inter', sans-serif;
+.item-icon {
+  font-family: "Inter", sans-serif;
   font-size: 80px;
   font-style: normal;
   align-items: left;
   padding-right: 20px;
+  opacity: 72%;
 }
 
-.menu-detail{
-  display: flex;
-  flex-direction: column;
+.menu-detail {
+  width: 100%;
+  color: #000000;
 }
 
-.ingredients{
+.item-name {
+  font-size: 28px;
+  padding-bottom: 8px;
+  font-weight: 400;
+}
+
+.item-ingredients {
   font-size: 16px;
+  color: #8b8b8b;
+  width: 100%;
+  padding-bottom: 10px;
 }
 
-.add-item-btn{
+.item-price {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.add-item-btn {
   display: flex;
   justify-content: right;
-  font-family: 'Inter', sans-serif;
+}
+
+.add-btn{
+  height: 50px;
+  width: 50px;
+  font-family: "Inter", sans-serif;
   font-size: 32px;
+  
+  border: 1.5px solid #DEDEDE;
+  background: transparent;
+  border-radius: 50%;
   font-weight: 200;
-  width: 100%;
+  color: #3C3C3C;
 }

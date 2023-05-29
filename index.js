@@ -9,9 +9,9 @@ menuArray.forEach((item) => {
         <i class="item-icon" alt="An icon representing ${item.name}">${item.emoji}</i>
       </div>
       <div class="menu-detail">  
-        <h2>${item.name}</h2>
-        <p class="ingredients">${item.ingredients}</p>
-        <h3>$${item.price}</h3>
+        <h2 class="item-name">${item.name}</h2>
+        <p class="item-ingredients">${item.ingredients}</p>
+        <h3 class="item-price">$${item.price}</h3>
       </div>
       <div class="add-item-btn">  
         <button class="add-btn" id="add-btn">+</button>
