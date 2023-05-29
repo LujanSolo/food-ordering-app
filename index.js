@@ -1,8 +1,9 @@
 import { menuArray } from "./data.js";
-let menu = document.getElementById('menu-container');
+
 
 
 menuArray.forEach((item) => {
+  let menu = document.getElementById('menu-container');
   menu.innerHTML += `
     <div class="menu-item">
       <div class="menu-icon">
@@ -32,3 +33,9 @@ document.addEventListener('click', (e) => {
 
   //event listener for PURCHASE ORDER
 })
+
+function addItemToOrder() {
+  // document.getElementById('order-container').classList.toggle('hidden')
+  //todo: Build dynamic section for Ordered Items, default set to "display: hidden"
+
+}

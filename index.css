@@ -83,6 +83,7 @@ p {
   width: 50px;
   font-family: "Inter", sans-serif;
   font-size: 32px;  
+  line-height: 32px;
   border: 1.5px solid #DEDEDE;
   background: transparent;
   border-radius: 50%;
