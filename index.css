@@ -11,6 +11,7 @@ body {
 }
 
 header {
+  
   height: 167px;
   background-image: url("https://images.unsplash.com/photo-1616645500344-209060c84970?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
   background-size: cover;
@@ -26,4 +27,41 @@ h1 {
 
 p {
   font-size: 22px;
+}
+
+#menu-container{
+  width: 500px;
+  margin: 10px auto;
+}
+
+.menu-item {
+  display: flex;
+  height: 140px;
+  align-items: center;
+}
+
+.item-icon{
+  font-family: 'Inter', sans-serif;
+  font-size: 80px;
+  font-style: normal;
+  align-items: left;
+  padding-right: 20px;
+}
+
+.menu-detail{
+  display: flex;
+  flex-direction: column;
+}
+
+.ingredients{
+  font-size: 16px;
+}
+
+.add-item-btn{
+  display: flex;
+  justify-content: right;
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 200;
+  width: 100%;
 }
