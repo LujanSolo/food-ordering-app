@@ -14,8 +14,21 @@ menuArray.forEach((item) => {
         <h3 class="item-price">$${item.price}</h3>
       </div>
       <div class="add-item-btn">  
-        <button class="add-btn" id="add-btn">+</button>
+        <button class="add-btn" id="add-btn" data-add="${item.id}">+</button>
       </div>
     </div>
   `;
 });
+
+document.addEventListener('click', (e) => {
+  //event listener for ADD ITEM with unique id
+  if (e.target.dataset.add) {
+    console.log('clicked')
+  }
+
+  //event listener for ORDER BUTTON
+
+  //event listener for REMOVE ITEM
+
+  //event listener for PURCHASE ORDER
+})
