@@ -10,7 +10,7 @@ menuArray.forEach((item) => {
       </div>
       <div class="menu-detail">  
         <h2 class="item-name">${item.name}</h2>
-        <p class="item-ingredients">${item.ingredients}</p>
+        <p class="item-ingredients">${item.ingredients.join(", ")}</p>
         <h3 class="item-price">$${item.price}</h3>
       </div>
       <div class="add-item-btn">  

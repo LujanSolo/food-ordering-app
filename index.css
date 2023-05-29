@@ -17,6 +17,7 @@ header {
   background-position-y: 65%;
   padding: 40px 0 0 30px;
   color: #ffffff;
+  margin-bottom: 67px;
 }
 
 h1 {
@@ -36,8 +37,9 @@ p {
 .menu-item {
   display: flex;
   height: 140px;
-  align-items: center;
+  align-items: top;
   border-bottom: 1px solid #D2D2D2;
+  margin-bottom: 45px; 
 }
 
 .item-icon {
@@ -45,7 +47,7 @@ p {
   font-size: 80px;
   font-style: normal;
   align-items: left;
-  padding-right: 20px;
+  padding-right: 30px;
   opacity: 72%;
 }
 
@@ -56,7 +58,6 @@ p {
 
 .item-name {
   font-size: 28px;
-  padding-bottom: 8px;
   font-weight: 400;
 }
 
@@ -64,7 +65,7 @@ p {
   font-size: 16px;
   color: #8b8b8b;
   width: 100%;
-  padding-bottom: 10px;
+  padding-bottom: 12px;
 }
 
 .item-price {
@@ -81,8 +82,7 @@ p {
   height: 50px;
   width: 50px;
   font-family: "Inter", sans-serif;
-  font-size: 32px;
-  
+  font-size: 32px;  
   border: 1.5px solid #DEDEDE;
   background: transparent;
   border-radius: 50%;
