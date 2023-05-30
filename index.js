@@ -4,7 +4,7 @@ console.log(currentOrderBucket)
 
 document.addEventListener("click", (e) => {
   if (e.target.id) {
-    addToOrder(e.target.id);
+    addToOrderArray(e.target.id);
   }
 });
 
@@ -33,12 +33,13 @@ function getMenuHtml() {
 }
 
 //* FILTER the selected menu item and STORE it in a CONST
-function addToOrder(itemId) {
+function addToOrderArray(itemId) {
   const targetMenuObj = menuArray.filter((item) => {
     return item.id === Number(itemId);
   })[0];
   currentOrderBucket.push(targetMenuObj)
   console.log(currentOrderBucket)
+  localStorage.setItem('order', JSON.stringify(currentOrderBucket))
 }
 
 function render() {
