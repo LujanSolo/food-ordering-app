@@ -1,41 +1,45 @@
 import { menuArray } from "./data.js";
 
-
-
-menuArray.forEach((item) => {
-  let menu = document.getElementById('menu-container');
-  menu.innerHTML += `
-    <div class="menu-item">
-      <div class="menu-icon">
-        <i class="item-icon" alt="An icon representing ${item.name}">${item.emoji}</i>
-      </div>
-      <div class="menu-detail">  
-        <h2 class="item-name">${item.name}</h2>
-        <p class="item-ingredients">${item.ingredients.join(", ")}</p>
-        <h3 class="item-price">$${item.price}</h3>
-      </div>
-      <div class="add-item-btn">  
-        <button class="add-btn" id="add-btn" data-add="${item.id}">+</button>
-      </div>
-    </div>
-  `;
-});
-
 document.addEventListener('click', (e) => {
-  //event listener for ADD ITEM with unique id
-  if (e.target.dataset.add) {
-    console.log('clicked')
+  if (e.target.id) {
+    addToOrder(e.target.id)
   }
-
-  //event listener for ORDER BUTTON
-
-  //event listener for REMOVE ITEM
-
-  //event listener for PURCHASE ORDER
 })
 
-function addItemToOrder() {
-  // document.getElementById('order-container').classList.toggle('hidden')
-  //todo: Build dynamic section for Ordered Items, default set to "display: hidden"
+//* ITERATE thru menuArray to print each menu item to the HTML
+function getMenuHtml() {
+  let menuHtml = '';
 
+  menuArray.forEach((item) => {
+    menuHtml += `
+      <div class="menu-item">
+        <i class="item-icon" alt="An icon representing ${item.name}">${item.emoji}</i>
+        <div class="menu-detail">  
+          <h2 class="item-name">${item.name}</h2>
+          <p class="item-ingredients">${item.ingredients.join(", ")}</p>
+          <h3 class="item-price">$${item.price}</h3>
+        </div>
+        <div class="add-item-btn">  
+          <button class="add-btn" id="${item.id}">+</button>
+        </div>
+      </div>
+    `;
+  })
+  return menuHtml;
+};
+
+//* FILTER the selected menu item and STORE it in a CONST
+function addToOrder(itemId) {
+  const targetMenuObj = menuArray.filter((item) => {
+    return item.id === Number(itemId)
+  })[0]
+  console.log(targetMenuObj)
+
+  localStorage.setItem('orderItem', JSON.stringify(targetMenuObj))
 }
+
+function render() {
+  document.getElementById('menu-container').innerHTML = getMenuHtml();
+}
+
+render();

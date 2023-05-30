@@ -6,8 +6,8 @@
 
 body {
   font-family: "Smythe", cursive, monospace;
-  width: 600px;
   margin: 10px auto;
+  max-width: 600px;
 }
 
 header {
@@ -30,7 +30,6 @@ p {
 }
 
 #menu-container {
-  width: 500px;
   margin: 10px auto;
 }
 
