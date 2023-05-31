@@ -15,8 +15,7 @@ function getMenuHtml() {
   menuArray.forEach((item) => {
     menuHtml += `
       <div class="menu-item">
-        <i class="item-icon" alt="An icon representing ${item.name}">${item.emoji
-      }</i>
+        <i class="item-icon" alt="An icon representing ${item.name}">${item.emoji}</i>
         <div class="menu-detail">  
           <h2 class="item-name">${item.name}</h2>
           <p class="item-ingredients">${item.ingredients.join(", ")}</p>
@@ -37,22 +36,22 @@ function getTargetObject(itemId) {
     return item.id === Number(itemId);
   })[0];
   pushOrderToArray(targetMenuObj);
-};
+}
 
 //* PUSH selected OrderObject to the currentOrder array
 function pushOrderToArray(object) {
   currentOrderBucket.push(object);
-  pushToLocalStorage(currentOrderBucket)
-};
-console.log(currentOrderBucket) //! DELETE LATER
+  pushToLocalStorage(currentOrderBucket);
+}
+console.log(currentOrderBucket); //! DELETE LATER
 
 //* SAVE OrderObject to Local Storage
 function pushToLocalStorage(object) {
-  localStorage.setItem('order', JSON.stringify(object));
-};
+  localStorage.setItem("order", JSON.stringify(object));
+}
 
 //* render current menu items to the page
 function render() {
   document.getElementById("menu-container").innerHTML = getMenuHtml();
-};
+}
 render();
