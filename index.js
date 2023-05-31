@@ -1,10 +1,10 @@
 import { menuArray } from "./data.js";
 let currentOrderBucket = [];
-console.log(currentOrderBucket)
 
+//* Document event listener using Event Object for targeting
 document.addEventListener("click", (e) => {
   if (e.target.id) {
-    addToOrderArray(e.target.id);
+    getTargetObject(e.target.id);
   }
 });
 
@@ -15,9 +15,8 @@ function getMenuHtml() {
   menuArray.forEach((item) => {
     menuHtml += `
       <div class="menu-item">
-        <i class="item-icon" alt="An icon representing ${item.name}">${
-      item.emoji
-    }</i>
+        <i class="item-icon" alt="An icon representing ${item.name}">${item.emoji
+      }</i>
         <div class="menu-detail">  
           <h2 class="item-name">${item.name}</h2>
           <p class="item-ingredients">${item.ingredients.join(", ")}</p>
@@ -32,18 +31,29 @@ function getMenuHtml() {
   return menuHtml;
 }
 
-//* FILTER the selected menu item and STORE it in a CONST
-function addToOrderArray(itemId) {
+//* FILTER the selected menu item, send to new array and local Storage
+function getTargetObject(itemId) {
   const targetMenuObj = menuArray.filter((item) => {
     return item.id === Number(itemId);
   })[0];
-  currentOrderBucket.push(targetMenuObj)
-  console.log(currentOrderBucket)
-  localStorage.setItem('order', JSON.stringify(currentOrderBucket))
-}
+  pushOrderToArray(targetMenuObj);
+  console.log(currentOrderBucket) //! DELETE LATER
+};
 
+//* PUSH selected OrderObject to the currentOrder array
+function pushOrderToArray(object) {
+  currentOrderBucket.push(object);
+  pushToLocalStorage(currentOrderBucket)
+};
+console.log(currentOrderBucket) //! DELETE LATER
+
+//* SAVE OrderObject to Local Storage
+function pushToLocalStorage(object) {
+  localStorage.setItem('order', JSON.stringify(object));
+};
+
+//* render current menu items to the page
 function render() {
   document.getElementById("menu-container").innerHTML = getMenuHtml();
-}
-
+};
 render();
