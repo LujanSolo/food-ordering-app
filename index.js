@@ -31,13 +31,12 @@ function getMenuHtml() {
   return menuHtml;
 }
 
-//* FILTER the selected menu item, send to new array and local Storage
+//* FILTER the selected menu item, send to new array
 function getTargetObject(itemId) {
   const targetMenuObj = menuArray.filter((item) => {
     return item.id === Number(itemId);
   })[0];
   pushOrderToArray(targetMenuObj);
-  console.log(currentOrderBucket) //! DELETE LATER
 };
 
 //* PUSH selected OrderObject to the currentOrder array
