@@ -8,7 +8,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-//* ITERATE thru menuArray to print each menu item to the HTML
+//* ITERATE thru menuArray to display each menu item to the HTML
 function getMenuHtml() {
   let menuHtml = "";
 
