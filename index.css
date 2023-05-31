@@ -8,6 +8,7 @@ body {
   font-family: "Smythe", cursive, monospace;
   margin: 10px auto;
   max-width: 600px;
+  min-width: 350px;
 }
 
 header {
@@ -31,6 +32,7 @@ p {
 
 #menu-container {
   margin: 10px auto;
+  padding: 0 10px;
 }
 
 .menu-item {

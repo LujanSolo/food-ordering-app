@@ -36,6 +36,7 @@ function getTargetObject(itemId) {
     return item.id === Number(itemId);
   })[0];
   pushOrderToArray(targetMenuObj);
+  console.log(targetMenuObj)
 }
 
 //* PUSH selected OrderObject to the currentOrder array
