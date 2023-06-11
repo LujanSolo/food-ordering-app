@@ -30,13 +30,23 @@ function getMenuHtml() {
   return menuHtml;
 }
 
+function getOrderHtml() {
+  let orderHtml = "";
+
+  currentOrderBucket.forEach((orderItem) => {
+    orderHtml += `
+      <div class="order
+    `
+  })
+}
+
 //* FILTER the selected menu item, send to new array
 function getTargetObject(itemId) {
   const targetMenuObj = menuArray.filter((item) => {
     return item.id === Number(itemId);
   })[0];
   pushOrderToArray(targetMenuObj);
-  console.log(targetMenuObj)
+  console.log(currentOrderBucket)
 }
 
 //* PUSH selected OrderObject to the currentOrder array
