@@ -20,6 +20,15 @@
       <!-- menu items will be dynamically added here -->
     </section>
     <section id="order-container">
+      <h3 class="order-header">Your Order</h3>
+      <div class="order-item">
+        <h2 class="order-col-1">${orderItem.name}</h2>
+        <button class="remove-btn" id="${orderItem.uuid}">remove</button>
+        <p class="item-price">${orderItem.price}</p>
+        <h3 class="order-col-1">Total price:</h3>
+        <p class="item-price" id="sum-price">price function</p>
+        <button class="order-btn" id="order-btn">Complete Order</button>
+      </div>
       <!-- selected menu items will be added here -->
     </section>
 

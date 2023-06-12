@@ -1,6 +1,8 @@
 import { menuArray } from "./data.js";
 let currentOrderBucket = [];
 
+//* on page load, get any items from local storage and push to currentOrderBucket
+
 //* Document event listener using Event Object for targeting
 document.addEventListener("click", (e) => {
   if (e.target.id) {
@@ -35,7 +37,16 @@ function getOrderHtml() {
 
   currentOrderBucket.forEach((orderItem) => {
     orderHtml += `
-      <div class="order
+      <h3 class="order-header">Your Order</h3>
+      <div class="order-item">
+        <h2 class="order-col-1">${orderItem.name}</h2>
+        <button class="remove-btn" id="${orderItem.uuid}">remove</button>
+        <p class="item-price">${orderItem.price}</p>
+        <h3 class="order-col-1">Total price:</h3>
+        <p class="item-price" id="sum-price">price function</p>
+        <button class="order-btn" id="order-btn">Complete Order</button>
+      </div>
+      
     `
   })
 }
