@@ -7,7 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400&family=Smythe&display=swap" rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400&family=Smythe&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="index.css" />
     <title>Online Ordering</title>
   </head>
@@ -19,15 +21,10 @@
     <section id="menu-container">
       <!-- menu items will be dynamically added here -->
     </section>
-    <section id="order-container">
+    <section class="hidden">
       <h3 class="order-header">Your Order</h3>
-      <div class="order-item">
-        <h2 class="order-col-1">${orderItem.name}</h2>
-        <button class="remove-btn" id="${orderItem.uuid}">remove</button>
-        <p class="item-price">${orderItem.price}</p>
-        <h3 class="order-col-1">Total price:</h3>
-        <p class="item-price" id="sum-price">price function</p>
-        <button class="order-btn" id="order-btn">Complete Order</button>
+      <div class="order-details">
+
       </div>
       <!-- selected menu items will be added here -->
     </section>

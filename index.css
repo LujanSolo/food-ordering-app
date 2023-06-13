@@ -91,3 +91,7 @@ p {
   font-weight: 200;
   color: #3C3C3C;
 }
+
+.hidden {
+  /* display: none; */
+}
