@@ -3,8 +3,6 @@ import { v4 as uuidv4 } from "https://jspm.dev/uuid"
 
 let currentOrderBucket = [];
 
-//* on page load, get any items from local storage and push to currentOrderBucket
-
 //* Document event listener using Event Object for targeting
 document.addEventListener("click", (e) => {
   if (e.target.id) {
@@ -34,21 +32,21 @@ function getMenuHtml() {
   return menuHtml;
 }
 
-
 //* FILTER the selected menu item, send to new array
 function getTargetObject(itemId) {
-  const targetMenuObj = menuArray.filter((item) => {
-    return item.id === Number(itemId);
-  })[0];
-  targetMenuObj.uuid = uuidv4();
-  pushOrderToArray(targetMenuObj);
-  console.log(targetMenuObj)
+  let targetMenuObj = menuArray.filter((item) => {
+    return item.id == itemId;
+  });
+  addItemToOrderArray(targetMenuObj)
+  console.log(currentOrderBucket)
 }
 
 //* PUSH selected OrderObject to the currentOrder array
-function pushOrderToArray(object) {
-  currentOrderBucket.push(object);
-  pushToLocalStorage(currentOrderBucket);
+function addItemToOrderArray(object) {
+  object.uuid = uuidv4();
+  currentOrderBucket.unshift(object);
+  console.log('currentOrderBucket:', currentOrderBucket)
+  // pushToLocalStorage(currentOrderBucket);
 }
 
 //* SAVE OrderObject to Local Storage
@@ -56,28 +54,42 @@ function pushToLocalStorage(object) {
   localStorage.setItem("order", JSON.stringify(object));
 }
 
+//* GET OrderObject from Local Storage
+function getLocalStorage(object) {
+  currentOrderBucket = JSON.parse(localStorage.getItem("order"));
+}
+
 //* FUNCTION to build the HTML for active orders
 function getOrderHtml() {
   let orderHtml = "";
-
-  currentOrderBucket.forEach((orderItem) => {
-    orderHtml += `
-      <div class="order-item">
-        <h2 class="order-col-1">${orderItem.name}</h2>
-        <button class="remove-btn" id="${orderItem.id}">remove</button>
-        <p class="item-price">${orderItem.price}</p>
-        <h3 class="order-col-1">Total price:</h3>
-        <p class="item-price" id="sum-price">price function</p>
-        <button class="order-btn" id="order-btn">Complete Order</button>
-      </div>
-    `
-  });
+  
+  if(currentOrderBucket.length) {
+    currentOrderBucket.forEach((orderItem) => {
+      orderHtml += `
+        <div class="order-item">
+          <h2 class="order-col-1">${orderItem.name}</h2>
+          <button class="remove-btn" id="${orderItem.uuid}">remove</button>
+          <p class="item-price">${orderItem.price}</p>
+          <h3 class="order-col-1">Total price:</h3>
+          <p class="item-price" id="sum-price">price function</p>
+          <button class="order-btn" id="order-btn">Complete Order</button>
+        </div>
+      `
+    });
+  }
+  
   return orderHtml;
 }
-console.log(currentOrderBucket)
+
 //* render current menu items to the page
-function render() {
+function renderMenu() {
   document.getElementById("menu-container").innerHTML = getMenuHtml();
-  // document.getElementById("order-details").innerHTML = getOrderHtml();
+  
 }
-render();
+
+function renderOrder() {
+  document.getElementById("order-details").innerHTML = getOrderHtml();
+}
+
+renderMenu();
+renderOrder();
