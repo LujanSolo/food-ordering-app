@@ -1,5 +1,5 @@
 import { menuArray } from "./data.js";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "https://jspm.dev/uuid"
 
 let currentOrderBucket = [];
 
@@ -40,8 +40,9 @@ function getTargetObject(itemId) {
   const targetMenuObj = menuArray.filter((item) => {
     return item.id === Number(itemId);
   })[0];
+  targetMenuObj.uuid = uuidv4();
   pushOrderToArray(targetMenuObj);
-  console.log(currentOrderBucket)
+  console.log(targetMenuObj)
 }
 
 //* PUSH selected OrderObject to the currentOrder array
