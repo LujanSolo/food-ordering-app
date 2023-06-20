@@ -94,7 +94,9 @@ function renderOrder() {
 }
 
 
-
+//todo: remove button functionality, tied to UUID of item
+//todo: total price function and js --> html insertion
+//todo: pay modal; thank you screen; timeout to reset page
 
 //* SAVE OrderObject to Local Storage
 // if(currentOrderArray.length > 0){
