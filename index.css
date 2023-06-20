@@ -31,7 +31,12 @@ p {
   font-size: 22px;
 }
 
-#menu-container {
+hr{
+  margin: 10px 0 15px 0;
+  border: 2px solid #393333;
+}
+
+.menu-container {
   margin: 10px auto;
   padding: 0 10px;
 }
@@ -111,7 +116,7 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 .item-details{
