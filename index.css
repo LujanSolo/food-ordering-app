@@ -7,8 +7,9 @@
 body {
   font-family: "Smythe", cursive, monospace;
   margin: 10px auto;
-  max-width: 600px;
-  min-width: 350px;
+  width: 600px;
+  /* max-width: 600px;
+  min-width: 360px; */
 }
 
 header {
@@ -99,12 +100,18 @@ p {
 .order-container{
   width: 510px;
   margin: 0 auto;
+  text-align: center;
+}
+
+.order-header{
+  margin-bottom: 64px;
 }
 
 .order-item{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 22px;
 }
 
 .item-details{

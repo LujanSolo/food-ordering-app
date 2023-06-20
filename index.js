@@ -76,10 +76,10 @@ function getOrderHtml() {
     orderHtml += `
         <div class="order-item">
           <div class="item-details">
-            <h2 class="order-col-1">${item.name}</h2>
+            <h2 class="item-name">${item.name}</h2>
             <button class="remove-btn" id="${item.uuid}">remove</button>
           </div>
-          <div class="item-price">
+          <div>
             <p class="item-price">$${item.price}</p>
           </div>
         </div>
@@ -90,7 +90,7 @@ function getOrderHtml() {
 
 //* Render user's order
 function renderOrder() {
-  document.getElementById("order-container").innerHTML = getOrderHtml();
+  document.getElementById("order-details").innerHTML = getOrderHtml();
 }
 
 
