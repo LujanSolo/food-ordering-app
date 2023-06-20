@@ -45,7 +45,7 @@ document.addEventListener("click", (e) => {
 //* FILTER the selected menu item, send to new array
 function getTargetObject(itemId) {
   const targetMenuObj = menuArray.filter((item) => {
-  return item.id === Number(itemId)
+    return item.id === Number(itemId)
   })[0];
   addItemToOrderArray(targetMenuObj);
 }
@@ -54,7 +54,7 @@ function getTargetObject(itemId) {
 let currentOrderArray = [];
 //* PUSH selected OrderObject to the currentOrder array
 function addItemToOrderArray(item) {
-  
+
   const orderObj = {
     name: item.name,
     price: item.price,
@@ -75,9 +75,13 @@ function getOrderHtml() {
   currentOrderArray.forEach((item) => {
     orderHtml += `
         <div class="order-item">
-          <h2 class="order-col-1">${item.name}</h2>
-          <button class="remove-btn" id="${item.uuid}">remove</button>
-          <p class="item-price">${item.price}</p>
+          <div class="item-details">
+            <h2 class="order-col-1">${item.name}</h2>
+            <button class="remove-btn" id="${item.uuid}">remove</button>
+          </div>
+          <div class="item-price">
+            <p class="item-price">$${item.price}</p>
+          </div>
         </div>
       `
   });
