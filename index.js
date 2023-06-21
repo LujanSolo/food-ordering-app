@@ -31,14 +31,16 @@ function renderMenu() {
 renderMenu();
 
 
+
 //* ORDER SECTION
-
-
 
 //* Document event listener using Event Object for targeting
 document.addEventListener("click", (e) => {
   if (e.target.id) {
     getTargetObject(e.target.id);
+  }
+  else if (e.target.dataset.remove) {
+    handleRemoveClick(e.target.dataset.remove);
   }
 });
 
@@ -49,6 +51,8 @@ function getTargetObject(itemId) {
   })[0];
   addItemToOrderArray(targetMenuObj);
 }
+
+
 
 
 let currentOrderArray = [];
@@ -65,6 +69,7 @@ function addItemToOrderArray(item) {
 
   currentOrderArray.push(orderObj);
   renderOrder();
+  console.log(currentOrderArray)
 }
 
 
@@ -74,10 +79,10 @@ function getOrderHtml() {
 
   currentOrderArray.forEach((item) => {
     orderHtml += `
-        <div class="order-item">
+        <div class="order-item" id="${item.uuid}">
           <div class="item-details">
             <h2 class="item-name">${item.name}</h2>
-            <button class="remove-btn" id="${item.uuid}">remove</button>
+            <button class="remove-btn" data-remove="${item.uuid}">remove</button>
           </div>
           <div>
             <p class="item-price">$${item.price}</p>
@@ -90,11 +95,28 @@ function getOrderHtml() {
 
 //* Render user's order
 function renderOrder() {
-  if(currentOrderArray.length > 0){
-    document.getElementById('order-section').classList.remove('hidden');
+  if (currentOrderArray.length > 0) {
+    document.getElementById('order-section').style.display = 'block';
   }
+  else {
+    document.getElementById('order-section').style.display = 'none';
+  }
+
   document.getElementById("order-details").innerHTML = getOrderHtml();
 }
+
+function handleRemoveClick(uuid) {
+  const targetOrderObject = currentOrderArray.filter((item) => {
+    return item.uuid == uuid
+  })[0];
+
+  console.log(targetOrderObject)
+
+  currentOrderArray.splice(targetOrderObject);
+  renderOrder();
+  console.log(currentOrderArray)
+}
+
 
 //todo - Hide order div until something is added to the array
 //todo: remove button functionality, tied to UUID of item
