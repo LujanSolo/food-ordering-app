@@ -1,7 +1,10 @@
 import { menuArray } from "./data.js";
 import { v4 as uuidv4 } from "https://jspm.dev/uuid"
 
-//* ITERATE thru menuArray to display each menu item to the HTML
+
+//* MENU SECTION
+
+// ITERATE thru menuArray to display each menu item to the HTML
 function getMenuHtml() {
   let menuHtml = "";
 
@@ -23,18 +26,17 @@ function getMenuHtml() {
   return menuHtml;
 }
 
-//* render current menu items to the page
+//render current menu items to the page
 function renderMenu() {
   document.getElementById("menu-container").innerHTML = getMenuHtml();
 }
-
 renderMenu();
 
 
 
 //* ORDER SECTION
 
-//* Document event listener using Event Object for targeting
+// Document event listener 
 document.addEventListener("click", (e) => {
   if (e.target.id) {
     getTargetObject(e.target.id);
@@ -51,8 +53,6 @@ function getTargetObject(itemId) {
   })[0];
   addItemToOrderArray(targetMenuObj);
 }
-
-
 
 
 let currentOrderArray = [];
@@ -79,7 +79,7 @@ function getOrderHtml() {
 
   currentOrderArray.forEach((item) => {
     orderHtml += `
-        <div class="order-item" id="${item.uuid}">
+        <div class="order-item">
           <div class="item-details">
             <h2 class="item-name">${item.name}</h2>
             <button class="remove-btn" data-remove="${item.uuid}">remove</button>
@@ -106,20 +106,21 @@ function renderOrder() {
 }
 
 function handleRemoveClick(uuid) {
-  const targetOrderObject = currentOrderArray.filter((item) => {
-    return item.uuid == uuid
-  })[0];
+  const index = currentOrderArray.findIndex((item) => {
+    return item.uuid === uuid;
+  });
 
-  console.log(targetOrderObject)
+  console.log(index)
 
-  currentOrderArray.splice(targetOrderObject);
-  renderOrder();
+  if(index > -1){
+    currentOrderArray.splice(index, 1);
+    renderOrder();
+  }
   console.log(currentOrderArray)
 }
 
 
-//todo - Hide order div until something is added to the array
-//todo: remove button functionality, tied to UUID of item
+
 //todo: total price function and js --> html insertion
 //todo: pay modal; thank you screen; timeout to reset page
 
