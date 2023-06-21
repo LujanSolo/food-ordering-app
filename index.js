@@ -52,6 +52,7 @@ function getTargetObject(itemId) {
 
 
 let currentOrderArray = [];
+
 //* PUSH selected OrderObject to the currentOrder array
 function addItemToOrderArray(item) {
 
@@ -64,7 +65,6 @@ function addItemToOrderArray(item) {
 
   currentOrderArray.push(orderObj);
   renderOrder();
-  console.log(currentOrderArray)
 }
 
 
@@ -90,10 +90,13 @@ function getOrderHtml() {
 
 //* Render user's order
 function renderOrder() {
+  if(currentOrderArray.length > 0){
+    document.getElementById('order-section').classList.remove('hidden');
+  }
   document.getElementById("order-details").innerHTML = getOrderHtml();
 }
 
-
+//todo - Hide order div until something is added to the array
 //todo: remove button functionality, tied to UUID of item
 //todo: total price function and js --> html insertion
 //todo: pay modal; thank you screen; timeout to reset page

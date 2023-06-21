@@ -99,7 +99,7 @@ hr{
 }
 
 .hidden {
-  /* display: none; */
+  display: none;
 }
 
 .order-container{
