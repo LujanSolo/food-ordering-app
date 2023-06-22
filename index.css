@@ -31,7 +31,7 @@ p {
   font-size: 22px;
 }
 
-hr{
+hr {
   margin: 10px 0 15px 0;
   border: 2px solid #393333;
 }
@@ -45,8 +45,8 @@ hr{
   display: flex;
   height: 140px;
   align-items: top;
-  border-bottom: 1px solid #D2D2D2;
-  margin-bottom: 45px; 
+  border-bottom: 1px solid #d2d2d2;
+  margin-bottom: 45px;
 }
 
 .item-icon {
@@ -85,45 +85,45 @@ hr{
   justify-content: right;
 }
 
-.add-btn{
+.add-btn {
   height: 50px;
   width: 50px;
   font-family: "Inter", sans-serif;
-  font-size: 32px;  
+  font-size: 32px;
   line-height: 32px;
-  border: 1.5px solid #DEDEDE;
+  border: 1.5px solid #dedede;
   background: transparent;
   border-radius: 50%;
   font-weight: 200;
-  color: #3C3C3C;
+  color: #3c3c3c;
 }
 
 .hidden {
   display: none;
 }
 
-.order-container{
+.order-container {
   width: 510px;
   margin: 0 auto;
   text-align: center;
 }
 
-.order-header{
+.order-header {
   margin-bottom: 64px;
 }
 
-.order-item{
+.order-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.item-details{
+.item-details {
   display: flex;
 }
 
-.remove-btn{
+.remove-btn {
   font-family: "Smythe", cursive, monospace;
   font-size: 16px;
   color: #8b8b8b;
@@ -132,20 +132,20 @@ hr{
   background-color: transparent;
 }
 
-.remove-btn:hover{
+.remove-btn:hover {
   font-size: 18px;
   color: #c43838;
 }
 
-.total-price{
+.total-price {
   display: flex;
   justify-content: space-between;
 }
 
-.complete-order-btn{
+.complete-order-btn {
   width: 500px;
   height: 60px;
-  background: #16DB99;
+  background: #16db99;
   color: #ffffff;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 3px;
@@ -156,5 +156,55 @@ hr{
   font-weight: 700;
 }
 
+/* Modal Section */
+.modal-container {
+  border-radius: 3.89px;
+  background: #fff;
+  width: 524px;
+  height: 542.24px;
+  flex-shrink: 0;
+  /* display: none; */
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 475.911px;
+  height: 71.304px;
+  flex-shrink: 0;
+  margin: 0 24px 24px 24px;
+  color: #757575;
+font-size: 20px;
+font-family: Verdana;
+line-height: 31.119px;
+padding-left: 50px;
+}
+
+.pay-btn {
+  width: 475.911px;
+  height: 71.304px;
+  flex-shrink: 0;
+  border-radius: 3.89px;
+  background: #16db99;
+  color: #ffffff;
+  margin: 24px;
+}
 
 
+
+.modal-title {
+  margin: 46px 112px 46px 108px;
+  color: #000;
+  font-size: 24px;
+  font-family: Verdana;
+  font-weight: 700;
+}

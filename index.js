@@ -103,7 +103,7 @@ function renderOrder() {
   }
   document.getElementById("order-details").innerHTML = getOrderHtml();
 
-  const totalPrice = calculateTotalPrice();
+  const totalPrice = calculateTotalPrice(); 
   document.getElementById("total-price").innerHTML = `$${totalPrice}`
 };
 
