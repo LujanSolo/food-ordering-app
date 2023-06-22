@@ -2,7 +2,6 @@ import { menuArray } from "./data.js";
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
 const currentOrderArray = [];
-const paymentForm = document.getElementById("payment-form");
 
 // Document event listener
 document.addEventListener("click", (e) => {
@@ -13,7 +12,8 @@ document.addEventListener("click", (e) => {
     handleRemoveClick(e.target.dataset.remove);
   }
   if (e.target.id === "complete-btn") {
-    displayModal();
+    revealModal();
+    console.log("clicked")
   }
   else if (e.target.id === "pay-btn") {
     e.preventDefault();
@@ -136,23 +136,34 @@ function handleRemoveClick(uuid) {
 
 
 //* PAYMENT MODAL
-function displayModal() {
-  document.getElementById("modal-section").style.display = "block";
+const modalSection = document.getElementById("modal-section");
+
+function revealModal() {
+  modalSection.style.display = "block";
   document.body.style.backgroundColor = "#DEDEDE";
+};
+
+function hideModal() {
+  modalSection.style.display = "none";
+  document.body.style.backgroundColor = "#ffffff";
 }
 
 function handlePaymentClick(){
+  const paymentForm = document.getElementById("payment-form");
   const paymentFormData = new FormData(paymentForm);
   const name = paymentFormData.get("guest-name");
-    
-  document.getElementById("thanks").innerHTML = `
+  
+  if (paymentForm.checkValidity()) {
+    document.getElementById("thanks").innerHTML = `
     Thank you, ${name}, your order is on its way!
   `;
-
+  hideModal();
   document.getElementById("thanks").style.display = "block";
-  document.getElementById("modal-section").style.display = "none";
   document.getElementById("order-section").style.display = "none";
-}
+  } else {
+    paymentForm.reportValidity();
+  };
+};
 
 
 
