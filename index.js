@@ -34,11 +34,6 @@ function renderMenu() {
 
 renderMenu();
 
-
-
-
-
-
 //* ORDER SECTION
 
 // Document event listener
@@ -49,14 +44,17 @@ document.addEventListener("click", (e) => {
   else if (e.target.dataset.remove) {
     handleRemoveClick(e.target.dataset.remove);
   }
+  else if (e.target.id === "complete-btn") {
+    console.log('clicked PAY');
+  }
 });
 
 //* FILTER the selected menu item, send to new array
 function getTargetObject(itemId) {
-  const targetMenuObj = menuArray.filter((item) => {
-    return item.id === Number(itemId);
-  })[0];
-  addItemToOrderArray(targetMenuObj);
+  const targetMenuObj = menuArray.find((item) => item.id === Number(itemId));
+  if(targetMenuObj){
+    addItemToOrderArray(targetMenuObj);
+  }
 };
 
 //* PUSH selected OrderObject to the currentOrder array and renderOrderlet currentOrderArray = [];()
@@ -107,7 +105,7 @@ function renderOrder() {
   document.getElementById("total-price").innerHTML = `$${totalPrice}`
 };
 
-// CALCULATE total price and return value
+//* CALCULATE total price and return value
 function calculateTotalPrice() {
   let totalPrice = 0;
 
@@ -130,14 +128,6 @@ function handleRemoveClick(uuid) {
 
 
 
-
-
-
-
-
-
-
-//todo: total price function and js --> html insertion
 //todo: pay modal; thank you screen; timeout to reset page
 
 //* SAVE OrderObject to Local Storage

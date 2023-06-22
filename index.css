@@ -8,8 +8,6 @@ body {
   font-family: "Smythe", cursive, monospace;
   margin: 10px auto;
   width: 600px;
-  /* max-width: 600px;
-  min-width: 360px; */
 }
 
 header {
@@ -142,7 +140,7 @@ hr {
   justify-content: space-between;
 }
 
-.complete-order-btn {
+.complete-btn {
   width: 500px;
   height: 60px;
   background: #16db99;
@@ -158,12 +156,12 @@ hr {
 
 /* Modal Section */
 .modal-container {
+  display: none;
   border-radius: 3.89px;
   background: #fff;
   width: 524px;
   height: 542.24px;
   flex-shrink: 0;
-  /* display: none; */
   position: fixed;
   right: 0;
   left: 0;
