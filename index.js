@@ -19,7 +19,7 @@ function getMenuHtml() {
           <h3 class="item-price">$${item.price}</h3>
         </div>
         <div class="add-item-btn">  
-          <button class="add-btn" id="${item.id}">+</button>
+          <button class="add-btn" id="${item.id}" data-add="${item.id}">+</button>
         </div>
       </div>
     `;
@@ -38,21 +38,22 @@ renderMenu();
 
 // Document event listener
 document.addEventListener("click", (e) => {
-  if (e.target.id) {
-    getTargetObject(e.target.id);
+  if (e.target.dataset.add) {
+    getTargetObject(e.target.dataset.add);
   }
   else if (e.target.dataset.remove) {
     handleRemoveClick(e.target.dataset.remove);
   }
-  else if (e.target.id === "complete-btn") {
-    console.log('clicked PAY');
+  else if (e.target.dataset.complete) {
+    displayModal();
   }
+
 });
 
 //* FILTER the selected menu item, send to new array
 function getTargetObject(itemId) {
   const targetMenuObj = menuArray.find((item) => item.id === Number(itemId));
-  if(targetMenuObj){
+  if (targetMenuObj) {
     addItemToOrderArray(targetMenuObj);
   }
 };
@@ -101,7 +102,7 @@ function renderOrder() {
   }
   document.getElementById("order-details").innerHTML = getOrderHtml();
 
-  const totalPrice = calculateTotalPrice(); 
+  const totalPrice = calculateTotalPrice();
   document.getElementById("total-price").innerHTML = `$${totalPrice}`
 };
 
@@ -123,6 +124,13 @@ function handleRemoveClick(uuid) {
   renderOrder();
   console.log(currentOrderArray); //! REMOVE
 };
+
+//* UNHIDE PAYMENT MODAL
+function displayModal() {
+  document.getElementById("modal-section").style.display = "blok";
+  document.body.style.backgroundColor = "#DEDEDE";
+
+}
 
 
 
