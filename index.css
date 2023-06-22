@@ -191,6 +191,7 @@ input {
   width: 475.911px;
   height: 71.304px;
   flex-shrink: 0;
+  border: none;
   border-radius: 3.89px;
   background: #16db99;
   color: #ffffff;

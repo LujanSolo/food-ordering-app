@@ -127,7 +127,7 @@ function handleRemoveClick(uuid) {
 
 //* UNHIDE PAYMENT MODAL
 function displayModal() {
-  document.getElementById("modal-section").style.display = "blok";
+  document.getElementById("modal-section").style.display = "block";
   document.body.style.backgroundColor = "#DEDEDE";
 
 }
@@ -136,7 +136,7 @@ function displayModal() {
 
 
 
-//todo: pay modal; thank you screen; timeout to reset page
+//todo: pay modal prevent default, then action; thank you screen; timeout to reset page; local storage
 
 //* SAVE OrderObject to Local Storage
 // if(currentOrderArray.length > 0){
