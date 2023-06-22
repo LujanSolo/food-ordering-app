@@ -1,6 +1,7 @@
 import { menuArray } from "./data.js";
-import { v4 as uuidv4 } from "https://jspm.dev/uuid"
+import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
+let currentOrderArray = [];
 
 //* MENU SECTION
 
@@ -21,22 +22,26 @@ function getMenuHtml() {
           <button class="add-btn" id="${item.id}">+</button>
         </div>
       </div>
-    `
+    `;
   });
   return menuHtml;
-}
+};
 
 //render current menu items to the page
 function renderMenu() {
   document.getElementById("menu-container").innerHTML = getMenuHtml();
-}
+};
+
 renderMenu();
+
+
+
 
 
 
 //* ORDER SECTION
 
-// Document event listener 
+// Document event listener
 document.addEventListener("click", (e) => {
   if (e.target.id) {
     getTargetObject(e.target.id);
@@ -49,29 +54,25 @@ document.addEventListener("click", (e) => {
 //* FILTER the selected menu item, send to new array
 function getTargetObject(itemId) {
   const targetMenuObj = menuArray.filter((item) => {
-    return item.id === Number(itemId)
+    return item.id === Number(itemId);
   })[0];
   addItemToOrderArray(targetMenuObj);
-}
+};
 
-
-let currentOrderArray = [];
-
-//* PUSH selected OrderObject to the currentOrder array
+//* PUSH selected OrderObject to the currentOrder array and renderOrderlet currentOrderArray = [];()
 function addItemToOrderArray(item) {
-
   const orderObj = {
     name: item.name,
     price: item.price,
     id: item.id,
-    uuid: uuidv4()
-  }
+    uuid: uuidv4(),
+  };
 
   currentOrderArray.push(orderObj);
   renderOrder();
-  console.log(currentOrderArray)
-}
 
+  console.log(currentOrderArray); //!REMOVE
+};
 
 //* FUNCTION to build the HTML for active orders
 function getOrderHtml() {
@@ -88,36 +89,51 @@ function getOrderHtml() {
             <p class="item-price">$${item.price}</p>
           </div>
         </div>
-      `
+      `;
   });
   return orderHtml;
-}
+};
 
 //* Render user's order
 function renderOrder() {
   if (currentOrderArray.length > 0) {
-    document.getElementById('order-section').style.display = 'block';
+    document.getElementById("order-section").style.display = "block";
+  } else {
+    document.getElementById("order-section").style.display = "none";
   }
-  else {
-    document.getElementById('order-section').style.display = 'none';
-  }
-
   document.getElementById("order-details").innerHTML = getOrderHtml();
-}
+
+  const totalPrice = calculateTotalPrice();
+  document.getElementById("total-price").innerHTML = `$${totalPrice}`
+};
+
+// CALCULATE total price and return value
+function calculateTotalPrice() {
+  let totalPrice = 0;
+
+  currentOrderArray.forEach((item) => {
+    totalPrice += item.price;
+  });
+  return totalPrice;
+};
 
 function handleRemoveClick(uuid) {
   const index = currentOrderArray.findIndex((item) => {
     return item.uuid === uuid;
   });
+  currentOrderArray.splice(index, 1);
+  renderOrder();
+  console.log(currentOrderArray); //! REMOVE
+};
 
-  console.log(index)
 
-  if(index > -1){
-    currentOrderArray.splice(index, 1);
-    renderOrder();
-  }
-  console.log(currentOrderArray)
-}
+
+
+
+
+
+
+
 
 
 
@@ -133,4 +149,3 @@ function handleRemoveClick(uuid) {
 // function getLocalStorage(object) {
 //   currentOrderArray = JSON.parse(localStorage.getItem("order"));
 // }
-
