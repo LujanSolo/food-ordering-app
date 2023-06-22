@@ -1,7 +1,7 @@
 import { menuArray } from "./data.js";
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
-let currentOrderArray = [];
+const currentOrderArray = [];
 
 //* MENU SECTION
 
@@ -44,10 +44,13 @@ document.addEventListener("click", (e) => {
   else if (e.target.dataset.remove) {
     handleRemoveClick(e.target.dataset.remove);
   }
-  else if (e.target.dataset.complete) {
+  if (e.target.id === "complete-btn") {
     displayModal();
   }
-
+  else if (e.target.id === "pay-btn") {
+    e.preventDefault();
+    console.log('clicked');
+  }
 });
 
 //* FILTER the selected menu item, send to new array
@@ -129,7 +132,6 @@ function handleRemoveClick(uuid) {
 function displayModal() {
   document.getElementById("modal-section").style.display = "block";
   document.body.style.backgroundColor = "#DEDEDE";
-
 }
 
 

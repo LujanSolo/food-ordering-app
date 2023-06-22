@@ -1,62 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400&family=Smythe&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="index.css" />
-    <title>Online Ordering</title>
-  </head>
-  <body>
-    <header>
-      <h1>Jimmy's Diner</h1>
-      <p>The best burgers and pizzas in town.</p>
-    </header>
-    <section id="menu-container" class="menu-container">
-      <!-- from JS -->
-    </section>
 
-<!-- ORDER SECTION -->
-    <section id="order-section" class="hidden">
-      <div class="order-container">
-        <div>
-          <h2 class="order-header">Your Order</h2>
-        </div>
-        <div id="order-details">
-          <!-- from JS -->
-        </div>
-        <hr />
-        <div class="total-price">
-          <h2>Total price:</h2>
-          <p class="item-price" id="total-price">
-            <!-- TOTAL PRICE FROM JS-->
-          </p>
-        </div>
-        <button class="complete-btn" id="complete-btn" data-complete="complete-btn">Complete Order</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400&family=Smythe&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+  <title>Online Ordering</title>
+</head>
+
+<body>
+  <header>
+    <h1>Jimmy's Diner</h1>
+    <p>The best burgers and pizzas in town.</p>
+  </header>
+  <section id="menu-container" class="menu-container">
+    <!-- from JS -->
+  </section>
+
+  <!-- ORDER SECTION -->
+  <section id="order-section" class="hidden">
+    <div class="order-container">
+      <div>
+        <h2 class="order-header">Your Order</h2>
       </div>
-    </section>
+      <div id="order-details">
+        <!-- from JS -->
+      </div>
+      <hr />
+      <div class="total-price">
+        <h2>Total price:</h2>
+        <p class="item-price" id="total-price">
+          <!-- TOTAL PRICE FROM JS-->
+        </p>
+      </div>
+      <button class="complete-btn" id="complete-btn">
+        Complete Order
+      </button>
+    </div>
+  </section>
 
+  <!-- MODAL SECTION -->
+  <section id="modal-section" class="modal-container hidden">
+    <h1 class="modal-title">Enter card details</h1>
+    <form>
+      <input type="text" id="name-input" placeholder="Enter your name" />
+      <input type="text" id="card-number-input" placeholder="Enter card number" />
+      <input type="text" id="cvv-input" placeholder="Enter CVV" />
+      <button type="submit" id="pay-btn" class="pay-btn">Pay</button>
+    </form>
+  </section>
 
+  <script src="index.js" type="module"></script>
+</body>
 
-
-
-<!-- MODAL SECTION -->
-    <section id="modal-section" class="modal-container hidden">
-      <h1 class="modal-title">Enter card details</h1>
-      <form>
-        <input type="text" id="name-input" placeholder="Enter your name">
-        <input type="text" id="card-number-input" placeholder="Enter card number">
-        <input type="text" id="cvv-input" placeholder="Enter CVV">
-        <button type="submit" id="pay-btn" class="pay-btn">Pay</button>
-      </form>
-    </section>
-
-    <script src="index.js" type="module"></script>
-  </body>
 </html>
