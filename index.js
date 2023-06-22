@@ -49,6 +49,7 @@ document.addEventListener("click", (e) => {
   }
   else if (e.target.id === "pay-btn") {
     e.preventDefault();
+    
     console.log('clicked');
   }
 });
