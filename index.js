@@ -158,6 +158,8 @@ function handlePaymentClick() {
     setTimeout(() => {
       location.reload();
     }, 6000);
+
+    localStorage.clear();
   } else {
     paymentForm.reportValidity();
   };
