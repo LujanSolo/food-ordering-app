@@ -5,12 +5,10 @@ let currentOrderArray = [];
 const modalSection = document.getElementById("modal-section");
 
 window.addEventListener('load', () => {
-  if(localStorage.getItem("order")){
+  if (localStorage.getItem("order")) {
     currentOrderArray = JSON.parse(localStorage.getItem("order"));
   };
-  
   renderOrder();
-  console.log(currentOrderArray)
 });
 
 // Document event listener
@@ -22,7 +20,6 @@ document.addEventListener("click", (e) => {
   }
   if (e.target.id === "complete-btn") {
     revealModal();
-    console.log("clicked");
   }
   else if (e.target.id === "pay-btn") {
     e.preventDefault();
@@ -103,7 +100,7 @@ function getOrderHtml() {
 
 //* RENDER USER ORDER
 function renderOrder() {
-  
+
   if (currentOrderArray.length > 0) {
     document.getElementById("order-section").style.display = "block";
   } else {
@@ -126,7 +123,7 @@ function calculateTotalPrice() {
 
 //* REMOVE BUTTON CLICK
 function handleRemoveClick(uuid) {
-  const index = currentOrderArray.findIndex((item) =>  item.uuid === uuid);
+  const index = currentOrderArray.findIndex((item) => item.uuid === uuid);
   currentOrderArray.splice(index, 1);
   localStorage.setItem("order", JSON.stringify(currentOrderArray));
   renderOrder();
@@ -154,7 +151,7 @@ function handlePaymentClick() {
     `;
 
     hideModal();
-    
+
     document.getElementById("thanks-box").style.display = "flex";
     document.getElementById("order-section").style.display = "none";
 
