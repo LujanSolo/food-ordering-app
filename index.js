@@ -1,7 +1,15 @@
 import { menuArray } from "./data.js";
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
-const currentOrderArray = [];
+let currentOrderArray = [];
+const modalSection = document.getElementById("modal-section");
+
+window.addEventListener('load', () => {
+  if(localStorage.getItem("order")){
+    currentOrderArray = JSON.parse(localStorage.getItem("order"));
+  };
+  console.log(currentOrderArray)
+});
 
 // Document event listener
 document.addEventListener("click", (e) => {
@@ -14,19 +22,16 @@ document.addEventListener("click", (e) => {
     revealModal();
     console.log("clicked");
   }
-  //the conditional statement here could be simplified to "e.target.id === "pay-btn", but this is another option, just in case there are other SUBMIT TYPE BUTTONS elsewhere in the doc
-  else if (e.target.type === "submit" && e.target.form.id === "payment-form") {
+  else if (e.target.id === "pay-btn") {
     e.preventDefault();
     handlePaymentClick();
   }
 });
 
 //* MENU SECTION
-
 // ITERATE thru menuArray to display each menu item to the HTML
 function getMenuHtml() {
   let menuHtml = "";
-
   menuArray.forEach((item) => {
     menuHtml += `
       <div class="menu-item">
@@ -51,12 +56,10 @@ function getMenuHtml() {
 function renderMenu() {
   document.getElementById("menu-container").innerHTML = getMenuHtml();
 }
-
 renderMenu();
 
 //* ORDER SECTION
-
-//* FILTER the SELECTED ITEM by ID
+// FILTER the SELECTED ITEM by ID
 function getTargetObject(itemId) {
   const targetMenuObj = menuArray.find((item) => item.id === Number(itemId));
   if (targetMenuObj) {
@@ -64,7 +67,7 @@ function getTargetObject(itemId) {
   }
 }
 
-//* PUSH ITEM TO NEW ARRAY, RENDER ORDER CALLED
+// PUSH ITEM TO NEW ARRAY, RENDER ORDER CALLED
 function addItemToOrderArray(item) {
   const orderObj = {
     name: item.name,
@@ -73,14 +76,14 @@ function addItemToOrderArray(item) {
     uuid: uuidv4(),
   };
   currentOrderArray.push(orderObj);
+  localStorage.setItem("order", JSON.stringify(currentOrderArray));
   renderOrder();
 }
 
 //* FUNCTION to build the HTML for active orders
 function getOrderHtml() {
   let orderHtml = "";
-
-  currentOrderArray.forEach((item) => {
+  currentOrderArray.map((item) => {
     orderHtml += `
         <div class="order-item">
           <div class="item-details">
@@ -98,6 +101,7 @@ function getOrderHtml() {
 
 //* RENDER USER ORDER
 function renderOrder() {
+  
   if (currentOrderArray.length > 0) {
     document.getElementById("order-section").style.display = "block";
   } else {
@@ -124,13 +128,11 @@ function handleRemoveClick(uuid) {
     return item.uuid === uuid;
   });
   currentOrderArray.splice(index, 1);
+  localStorage.setItem("order", JSON.stringify(currentOrderArray));
   renderOrder();
-  console.log(currentOrderArray); //! REMOVE
-}
+};
 
 //* PAYMENT MODAL
-const modalSection = document.getElementById("modal-section");
-
 function revealModal() {
   modalSection.style.display = "block";
   document.body.style.backgroundColor = "#DEDEDE";
@@ -164,14 +166,12 @@ function handlePaymentClick() {
   };
 };
 
-//todo: pay modal prevent default, then action; thank you screen; timeout to reset page; local storage
 
 //* SAVE OrderObject to Local Storage
-// if(currentOrderArray.length > 0){
+
 //   localStorage.setItem("order", JSON.stringify(currentOrderArray));
-// }
+
 
 // //* GET OrderObject from Local Storage
-// function getLocalStorage(object) {
-//   currentOrderArray = JSON.parse(localStorage.getItem("order"));
-// }
+
+//   const storedData = JSON.parse(localStorage.getItem("order"));
