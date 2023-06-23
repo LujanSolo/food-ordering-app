@@ -157,7 +157,7 @@ function handlePaymentClick() {
 
     setTimeout(() => {
       location.reload();
-    }, 6000);
+    }, 5000);
 
     localStorage.clear();
   } else {
