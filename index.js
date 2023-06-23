@@ -8,6 +8,8 @@ window.addEventListener('load', () => {
   if(localStorage.getItem("order")){
     currentOrderArray = JSON.parse(localStorage.getItem("order"));
   };
+  
+  renderOrder();
   console.log(currentOrderArray)
 });
 
