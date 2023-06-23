@@ -15,11 +15,11 @@ document.addEventListener("click", (e) => {
     revealModal();
     console.log("clicked")
   }
-  else if (e.target.id === "pay-btn") {
+  //the conditional statement here could be simplified to "e.target.id === "pay-btn", but this is another option, just in case there are other SUBMIT TYPE BUTTONS elsewhere in the doc
+  else if (e.target.type === "submit"  && e.target.form.id === "payment-form") {
     e.preventDefault();
-    handlePaymentClick()
-
-  }
+    handlePaymentClick();
+  };
 });
 
 
@@ -39,7 +39,7 @@ function getMenuHtml() {
           <h3 class="item-price">$${item.price}</h3>
         </div>
         <div class="add-item-btn">  
-          <button class="add-btn" id="${item.id}" data-add="${item.id}">+</button>
+          <button type="button" class="add-btn" id="${item.id}" data-add="${item.id}">+</button>
         </div>
       </div>
     `;
