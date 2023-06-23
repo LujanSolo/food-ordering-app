@@ -7,21 +7,19 @@ const currentOrderArray = [];
 document.addEventListener("click", (e) => {
   if (e.target.dataset.add) {
     getTargetObject(e.target.dataset.add);
-  }
-  else if (e.target.dataset.remove) {
+  } else if (e.target.dataset.remove) {
     handleRemoveClick(e.target.dataset.remove);
   }
   if (e.target.id === "complete-btn") {
     revealModal();
-    console.log("clicked")
+    console.log("clicked");
   }
   //the conditional statement here could be simplified to "e.target.id === "pay-btn", but this is another option, just in case there are other SUBMIT TYPE BUTTONS elsewhere in the doc
-  else if (e.target.type === "submit"  && e.target.form.id === "payment-form") {
+  else if (e.target.type === "submit" && e.target.form.id === "payment-form") {
     e.preventDefault();
     handlePaymentClick();
-  };
+  }
 });
-
 
 //* MENU SECTION
 
@@ -32,29 +30,29 @@ function getMenuHtml() {
   menuArray.forEach((item) => {
     menuHtml += `
       <div class="menu-item">
-        <i class="item-icon" alt="An icon representing ${item.name}">${item.emoji}</i>
+        <i class="item-icon" alt="An icon representing ${item.name}">${item.emoji
+      }</i>
         <div class="menu-detail">  
           <h2 class="item-name">${item.name}</h2>
           <p class="item-ingredients">${item.ingredients.join(", ")}</p>
           <h3 class="item-price">$${item.price}</h3>
         </div>
         <div class="add-item-btn">  
-          <button type="button" class="add-btn" id="${item.id}" data-add="${item.id}">+</button>
+          <button type="button" class="add-btn" id="${item.id}" data-add="${item.id
+      }">+</button>
         </div>
       </div>
     `;
   });
   return menuHtml;
-};
+}
 
 //render current menu items to the page
 function renderMenu() {
   document.getElementById("menu-container").innerHTML = getMenuHtml();
-};
+}
 
 renderMenu();
-
-
 
 //* ORDER SECTION
 
@@ -64,7 +62,7 @@ function getTargetObject(itemId) {
   if (targetMenuObj) {
     addItemToOrderArray(targetMenuObj);
   }
-};
+}
 
 //* PUSH ITEM TO NEW ARRAY, RENDER ORDER CALLED
 function addItemToOrderArray(item) {
@@ -76,7 +74,7 @@ function addItemToOrderArray(item) {
   };
   currentOrderArray.push(orderObj);
   renderOrder();
-};
+}
 
 //* FUNCTION to build the HTML for active orders
 function getOrderHtml() {
@@ -96,9 +94,7 @@ function getOrderHtml() {
       `;
   });
   return orderHtml;
-};
-
-
+}
 
 //* RENDER USER ORDER
 function renderOrder() {
@@ -110,8 +106,8 @@ function renderOrder() {
   document.getElementById("order-details").innerHTML = getOrderHtml();
 
   const totalPrice = calculateTotalPrice();
-  document.getElementById("total-price").innerText = `$${totalPrice}`
-};
+  document.getElementById("total-price").innerText = `$${totalPrice}`;
+}
 
 //* CALCULATE total price and return value
 function calculateTotalPrice() {
@@ -120,7 +116,7 @@ function calculateTotalPrice() {
     totalPrice += item.price;
   });
   return totalPrice;
-};
+}
 
 //* REMOVE BUTTON CLICK
 function handleRemoveClick(uuid) {
@@ -130,10 +126,7 @@ function handleRemoveClick(uuid) {
   currentOrderArray.splice(index, 1);
   renderOrder();
   console.log(currentOrderArray); //! REMOVE
-};
-
-
-
+}
 
 //* PAYMENT MODAL
 const modalSection = document.getElementById("modal-section");
@@ -141,7 +134,7 @@ const modalSection = document.getElementById("modal-section");
 function revealModal() {
   modalSection.style.display = "block";
   document.body.style.backgroundColor = "#DEDEDE";
-};
+}
 
 function hideModal() {
   modalSection.style.display = "none";
@@ -155,18 +148,21 @@ function handlePaymentClick() {
 
   if (paymentForm.checkValidity()) {
     document.getElementById("thanks-text").innerText = `
-    Thank you, ${name}! Your order is on its way.
-  `;
+      Thank you, ${name}! Your order is on its way.
+    `;
+
     hideModal();
+    
     document.getElementById("thanks-box").style.display = "flex";
     document.getElementById("order-section").style.display = "none";
+
+    setTimeout(() => {
+      location.reload();
+    }, 6000);
   } else {
     paymentForm.reportValidity();
   };
 };
-
-
-
 
 //todo: pay modal prevent default, then action; thank you screen; timeout to reset page; local storage
 
