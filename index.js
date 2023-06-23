@@ -124,9 +124,7 @@ function calculateTotalPrice() {
 
 //* REMOVE BUTTON CLICK
 function handleRemoveClick(uuid) {
-  const index = currentOrderArray.findIndex((item) => {
-    return item.uuid === uuid;
-  });
+  const index = currentOrderArray.findIndex((item) =>  item.uuid === uuid);
   currentOrderArray.splice(index, 1);
   localStorage.setItem("order", JSON.stringify(currentOrderArray));
   renderOrder();
@@ -165,13 +163,3 @@ function handlePaymentClick() {
     paymentForm.reportValidity();
   };
 };
-
-
-//* SAVE OrderObject to Local Storage
-
-//   localStorage.setItem("order", JSON.stringify(currentOrderArray));
-
-
-// //* GET OrderObject from Local Storage
-
-//   const storedData = JSON.parse(localStorage.getItem("order"));
