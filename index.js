@@ -18,7 +18,7 @@ document.addEventListener("click", (e) => {
   else if (e.target.id === "pay-btn") {
     e.preventDefault();
     handlePaymentClick()
-    
+
   }
 });
 
@@ -110,7 +110,7 @@ function renderOrder() {
   document.getElementById("order-details").innerHTML = getOrderHtml();
 
   const totalPrice = calculateTotalPrice();
-  document.getElementById("total-price").innerHTML = `$${totalPrice}`
+  document.getElementById("total-price").innerText = `$${totalPrice}`
 };
 
 //* CALCULATE total price and return value
@@ -148,18 +148,18 @@ function hideModal() {
   document.body.style.backgroundColor = "#ffffff";
 }
 
-function handlePaymentClick(){
+function handlePaymentClick() {
   const paymentForm = document.getElementById("payment-form");
   const paymentFormData = new FormData(paymentForm);
   const name = paymentFormData.get("guest-name");
-  
+
   if (paymentForm.checkValidity()) {
-    document.getElementById("thanks").innerHTML = `
-    Thank you, ${name}, your order is on its way!
+    document.getElementById("thanks-text").innerText = `
+    Thank you, ${name}! Your order is on its way.
   `;
-  hideModal();
-  document.getElementById("thanks").style.display = "block";
-  document.getElementById("order-section").style.display = "none";
+    hideModal();
+    document.getElementById("thanks-box").style.display = "flex";
+    document.getElementById("order-section").style.display = "none";
   } else {
     paymentForm.reportValidity();
   };
